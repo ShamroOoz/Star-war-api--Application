@@ -1,11 +1,9 @@
 import React from 'react';
-import NavBar from './Components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './page/Home';
-import NoMatch from './page/NoMatch';
-import FilmData from './page/FilmData';
+import { NavBar } from './Components';
+import { FilmData, NoMatch, Home } from './page';
 
-function App() {
+const App: React.FC = (): JSX.Element => {
     return (
         <Router>
             <NavBar />
@@ -22,6 +20,6 @@ function App() {
             </Switch>
         </Router>
     );
-}
+};
 
 export default App;
