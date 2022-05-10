@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { GetCharacter } from '../Components';
 import { BASE_URL, FilmType } from '../types';
 
 const FilmData: React.FC = (): JSX.Element => {
     const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
+    const history = useHistory();
     const [data, dataSet] = useState<FilmType | null>(null);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const FilmData: React.FC = (): JSX.Element => {
                 dataSet(data);
             } catch (error) {
                 console.log(error);
-                navigate('/');
+                history.push('/');
             }
         };
         fetchAPI();
