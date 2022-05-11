@@ -31,11 +31,7 @@ const Home: React.FC = (): JSX.Element => {
                     >
                         Sort By : Year
                     </button>
-                    <button
-                        type="button"
-                        onClick={() => sortByEpListner()}
-                        className="py-1.5 px-4 transition-colors bg-gray-50 border active:bg-blue-800 font-medium border-gray-200 hover:text-white text-blue-600 hover:border-blue-700 rounded-lg hover:bg-blue-600 disabled:opacity-50"
-                    >
+                    <button type="button" onClick={() => sortByEpListner()} className="p-4 text-white bg-black">
                         Sort By : Episode
                     </button>
                 </div>

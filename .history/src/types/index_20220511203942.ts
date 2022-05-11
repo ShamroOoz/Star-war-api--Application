@@ -1,16 +1,28 @@
+export interface filmsType {
+    episode_id: number;
+    release_date: Date;
+    title: string;
+}
+
+export type StateType = {
+    films: filmsType[];
+    loading: boolean;
+    error: boolean;
+};
+
+export type HookType = {
+    state: StateType;
+    sortByyearListner: () => void;
+    sortByEpListner: () => void;
+};
+
 export type ParamsType = {
     search: string;
 };
 
 export const BASE_URL = 'https://swapi.dev/api/films';
 
-export type ActionType = { type: 'MAKE_REQUEST' } | { type: 'GET_DATA'; payload: FilmType[] } | { type: 'ERROR' };
-
-export type StateType = {
-    films: FilmType[];
-    loading: boolean;
-    error: boolean;
-};
+export type ActionType = { type: 'MAKE_REQUEST' } | { type: 'GET_DATA'; payload: filmsType[] } | { type: 'ERROR' };
 
 export const initialState: StateType = {
     films: [],
@@ -22,15 +34,9 @@ export type FilmType = {
     id: number;
     episode_id: number;
     title: string;
-    release_date: Date;
+    release_date: string | number;
     opening_crawl: string | number;
     characters: string[];
-};
-
-export type HookType = {
-    state: StateType;
-    sortByyearListner: () => void;
-    sortByEpListner: () => void;
 };
 
 export type FilmProps = {

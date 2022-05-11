@@ -1,9 +1,10 @@
 import { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import { reducer } from '../Reducer/Reduce';
-import { HookType, ParamsType, BASE_URL, initialState } from '../types';
+import { ParamsType, BASE_URL, initialState } from '../types';
 
-export const useFetch = (params: ParamsType): HookType => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const useFetch = (params: ParamsType): any => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
@@ -17,8 +18,8 @@ export const useFetch = (params: ParamsType): HookType => {
                 },
             })
             .then(({ data }) => {
-                const filmdData = data.results.map((obj: { release_date: Date }, index: number) => {
-                    return { ...obj, release_date: new Date(obj.release_date), id: index + 1 };
+                const filmdData = data.results.map((obj: { release_date: Date }) => {
+                    return { ...obj, release_date: new Date(obj.release_date) };
                 });
                 dispatch({ type: 'GET_DATA', payload: filmdData });
             })
@@ -32,21 +33,14 @@ export const useFetch = (params: ParamsType): HookType => {
         };
     }, [params]);
 
-    const sortByyearListner = (): void => {
+    const sortByListner = (): void => {
         dispatch({ type: 'MAKE_REQUEST' });
-        const sortedResult = state.films.sort(
-            (objA, objB) => objB.release_date.getTime() - objA.release_date.getTime(),
-        );
-        dispatch({ type: 'GET_DATA', payload: sortedResult });
+
+        //const sortedAsc = arr1.sort((objA, objB) => objB.release_date.getTime() - objA.release_date.getTime());
+        // dispatch({ type: 'GET_DATA', payload: sortedAsc });
     };
 
-    const sortByEpListner = (): void => {
-        dispatch({ type: 'MAKE_REQUEST' });
-        const sortedResult = state.films.sort((objA, objB) => objA.episode_id - objB.episode_id);
-        dispatch({ type: 'GET_DATA', payload: sortedResult });
-    };
-
-    return { state, sortByyearListner, sortByEpListner };
+    return { state, sortByListner };
 };
 
 export type useFetchType = ReturnType<typeof useFetch>;

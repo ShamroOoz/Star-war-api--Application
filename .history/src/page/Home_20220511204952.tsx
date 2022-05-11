@@ -27,15 +27,11 @@ const Home: React.FC = (): JSX.Element => {
                     <button
                         type="button"
                         onClick={() => sortByyearListner()}
-                        className="py-1.5 px-4 transition-colors bg-green-600 border active:bg-green-800 font-medium border-green-700 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+                        className="p-4 text-white bg-black hover:bg-slate-900"
                     >
                         Sort By : Year
                     </button>
-                    <button
-                        type="button"
-                        onClick={() => sortByEpListner()}
-                        className="py-1.5 px-4 transition-colors bg-gray-50 border active:bg-blue-800 font-medium border-gray-200 hover:text-white text-blue-600 hover:border-blue-700 rounded-lg hover:bg-blue-600 disabled:opacity-50"
-                    >
+                    <button type="button" onClick={() => sortByEpListner()} className="p-4 text-white bg-black">
                         Sort By : Episode
                     </button>
                 </div>

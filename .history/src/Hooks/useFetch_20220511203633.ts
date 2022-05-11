@@ -1,9 +1,9 @@
 import { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import { reducer } from '../Reducer/Reduce';
-import { HookType, ParamsType, BASE_URL, initialState } from '../types';
+import { ParamsType, BASE_URL, initialState } from '../types';
 
-export const useFetch = (params: ParamsType): HookType => {
+export const useFetch = (params: ParamsType): any => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {

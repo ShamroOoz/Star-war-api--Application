@@ -27,12 +27,6 @@ export type FilmType = {
     characters: string[];
 };
 
-export type HookType = {
-    state: StateType;
-    sortByyearListner: () => void;
-    sortByEpListner: () => void;
-};
-
 export type FilmProps = {
     film: FilmType;
 };

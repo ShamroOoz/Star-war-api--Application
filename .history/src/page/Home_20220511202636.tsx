@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Film, Alert, Spinner, SearchForm } from '../Components';
 import { useFetch, useFetchType } from '../Hooks/useFetch';
-import { FilmType, ParamsType } from '../types';
+import { ParamsType } from '../types';
 
 const Home: React.FC = (): JSX.Element => {
     const [params, setparam] = useState({} as ParamsType);
@@ -24,21 +24,14 @@ const Home: React.FC = (): JSX.Element => {
             <SearchForm handleparamchange={handleparamchange} params={params} />
             <div className="px-2">
                 <div className="flex gap-3">
-                    <button
-                        type="button"
-                        onClick={() => sortByyearListner()}
-                        className="py-1.5 px-4 transition-colors bg-green-600 border active:bg-green-800 font-medium border-green-700 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
-                    >
+                    <button type="button" onClick={() => sortByyearListner()} className="p-4 text-white bg-black">
                         Sort By : Year
                     </button>
-                    <button
-                        type="button"
-                        onClick={() => sortByEpListner()}
-                        className="py-1.5 px-4 transition-colors bg-gray-50 border active:bg-blue-800 font-medium border-gray-200 hover:text-white text-blue-600 hover:border-blue-700 rounded-lg hover:bg-blue-600 disabled:opacity-50"
-                    >
+                    <button type="button" onClick={() => sortByEpListner()} className="p-4 text-white bg-black">
                         Sort By : Episode
                     </button>
                 </div>
+
                 {loading && <Spinner />}
                 {error && <Alert reason={error} />}
                 {!films.length && (
@@ -46,7 +39,7 @@ const Home: React.FC = (): JSX.Element => {
                         No result found....
                     </div>
                 )}
-                {films.length > 0 && films.map((film: FilmType, index: React.Key) => <Film key={index} film={film} />)}
+                {films.length > 0 && films.map((film, index) => <Film key={index} film={film} id={index + 1} />)}
             </div>
         </div>
     );

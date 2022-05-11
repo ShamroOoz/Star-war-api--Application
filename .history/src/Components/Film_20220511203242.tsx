@@ -22,7 +22,7 @@ const Film: React.FC<FilmProps> = ({ film }: FilmProps): JSX.Element => {
                 </div>
             </Link>
             <Link
-                to={`/film/${film.id}`}
+                to={`/film/${id}`}
                 className="flex flex-row items-center justify-center w-full px-2 py-4 bg-white lg:w-1/3 lg:justify-end lg:px-0 "
             >
                 <span className="px-4 mx-2 text-sm font-semibold leading-loose tracking-wider text-black transition duration-500 ease-in-out transform bg-yellow-200 rounded cursor-pointer hover:bg-yellow-400 hover:-translate-y-1 hover:scale-110 ">
