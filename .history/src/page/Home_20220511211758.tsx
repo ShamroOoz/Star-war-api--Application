@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Film, Alert, Spinner, SearchForm } from '../Components';
 import { useFetch, useFetchType } from '../Hooks/useFetch';
-import { FilmType, ParamsType, isEmpty } from '../types';
+import { FilmType, ParamsType } from '../types';
 
 const Home: React.FC = (): JSX.Element => {
     const [params, setparam] = useState({} as ParamsType);
@@ -41,7 +41,7 @@ const Home: React.FC = (): JSX.Element => {
                 </div>
                 {loading && <Spinner />}
                 {error && <Alert reason={error} />}
-                {!isEmpty(params) && films.length <= 0 && (
+                {!films.length && (
                     <div className="flex items-center justify-center mt-3 text-lg text-red-500 animate-pulse">
                         No result found....
                     </div>

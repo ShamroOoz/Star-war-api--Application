@@ -23,12 +23,11 @@ export const useFetch = (params: ParamsType): HookType => {
                 dispatch({ type: 'GET_DATA', payload: filmdData });
             })
             .catch((err) => {
-                if (axios.isCancel(err)) return;
                 console.log(err);
                 dispatch({ type: 'ERROR' });
             });
         return () => {
-            controller.abort();
+            cancelToken1.cancel();
         };
     }, [params]);
 

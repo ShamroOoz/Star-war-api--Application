@@ -7,11 +7,11 @@ export const useFetch = (params: ParamsType): HookType => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
-        const controller = new AbortController();
+        const cancelToken1 = axios.CancelToken.source();
         dispatch({ type: 'MAKE_REQUEST' });
         axios
             .get(BASE_URL, {
-                signal: controller.signal,
+                cancelToken: cancelToken1.token,
                 params: {
                     ...params,
                 },
@@ -28,7 +28,7 @@ export const useFetch = (params: ParamsType): HookType => {
                 dispatch({ type: 'ERROR' });
             });
         return () => {
-            controller.abort();
+            cancelToken1.cancel();
         };
     }, [params]);
 

@@ -64,6 +64,6 @@ export type ModalProps = {
     show: boolean;
 };
 
-export const isEmpty = (empty: ParamsType) => {
+export const isEmpty = (empty: { param: string }) => {
     return Object.keys(empty).length === 0 && empty.constructor === Object;
 };

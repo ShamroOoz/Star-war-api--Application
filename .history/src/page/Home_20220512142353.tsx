@@ -41,7 +41,7 @@ const Home: React.FC = (): JSX.Element => {
                 </div>
                 {loading && <Spinner />}
                 {error && <Alert reason={error} />}
-                {!isEmpty(params) && films.length <= 0 && (
+                {isEmpty(params) && (
                     <div className="flex items-center justify-center mt-3 text-lg text-red-500 animate-pulse">
                         No result found....
                     </div>
